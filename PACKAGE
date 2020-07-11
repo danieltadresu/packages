@@ -1,18 +1,23 @@
--- Package pck_Helados
+-- 3. Package pck_Helados
 
 CREATE OR REPLACE PACKAGE pck_Helados is
 
-    -- Declaración de la Función fn_BuscarHelado
+    -- 3.1. Declaración de la Función fn_BuscarHelado
     var_id_helado number(10);
     function fn_BuscarHelado(var_codigo_helado varchar2) return NUMBER;
-    -- end Declaración de la Función fn_BuscarHelado fn_BuscarHelado
+    -- end 3.1.
    
-    
-    var_cl number(10);
-    function fn_EstadoPedido(var_cliente_id number) return NUMBER;
-    
+    -- 3.2 Declaración procedimiento prc_GenerarPedido
     procedure prc_GenerarPedido
     (var_pedido_id number, var_pedido_fecha date, var_estado varchar2, var_valor number, var_cliente_id number); 
+    
+        -- 3.2.1 Función que valida si el Cliente tiene algún pedido en estado Activo. 
+        --       Se utiliza en el procedimiento prc_GenerarPedido a fin de validar el estado de los Pedidos anteriores del Cliente.
+        var_cl number(10);
+        function fn_EstadoPedido(var_cliente_id number) return NUMBER;
+    -- end 3.2.1.
+    
+    -- end 3.2.
     
 end pck_Helados;
 
